@@ -15,7 +15,7 @@
 void ft_error(char *str)
 {
 	ft_putstr_fd(str, 2);
-	exit (-1);
+	exit(-1);
 }
 
 void ft_putstr_fd(char *str, int fd)
@@ -25,7 +25,7 @@ void ft_putstr_fd(char *str, int fd)
 	i = 0;
 	while (str[i])
 	{
-		write(fd, str[i], 1);
+		write(fd, &(str[i]), 1);
 		i++;
 	}
 }
@@ -51,4 +51,21 @@ void ft_putnbr(int nbr)
 	}
 	else
 		write(1, &second, 1);
+}
+
+int	ft_atoi(char *str)
+{
+	int num;
+	int i;
+
+	i = 0;
+	num = 0;
+	while (str[i])
+	{
+		num = num * 10 + (str[i] - '0');
+		i++;
+	}
+	if (num < PID_MIN || num > PID_MAX)
+		ft_error("Error : PID is not valid\n");
+	return (num);
 }

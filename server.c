@@ -12,21 +12,27 @@
 
 #include "minitalk.h"
 
-struct sigaction sig_try;
-
 void receive(int signo)
 {
-	int		size;
-	char	bit;
+	static int		size = 0;
+	static char		bit = 0;
 
-	size = 0;
-	bit = 0;
 	printf("send_pid : %d\n", getpid());
-	// 비트 연산 들어감.
+	if (size < 8)
+	{
+		if (signo == 30)
+		{
+			bit = bit | 1;
+		}
+		bit = bit << size;
+		size++;
+	}
 	if (size == 8)
 	{
-		write (1, &bit, 8);
+		write (1, &bit, 1);
 		write (1, "\n", 1);
+		size = 0;
+		bit = 0;
 	}
 	printf("receiveß_done\n");
 }
@@ -34,11 +40,11 @@ void receive(int signo)
 int main(void)
 {
 	// sigemptyset(&sig_try.sa_mask);  블록될 시그널은 없음 이게 무슨 말일까
-	if (sigaction(SIGUSR1, &receive, NULL) < 0)
-		ft_error("Error : SIG_ERROR\n");
-	if (sigaction(SIGUSR2, &receive, NULL) < 0)
-		ft_error("Error : SIG_ERROR\n");
-	ft_putpid("Server PID", getpid());
+	// if (sigaction(SIGUSR1, &receive, NULL) < 0)
+	// 	ft_error("Error : SIG_ERROR\n");
+	// if (sigaction(SIGUSR2, &receive, NULL) < 0)
+	// 	ft_error("Error : SIG_ERROR\n");
+	ft_putpid("Server PID : ", getpid());
 	while (1)
 		pause();
 	return (0);
