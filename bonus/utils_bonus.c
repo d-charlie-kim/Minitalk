@@ -6,7 +6,7 @@
 /*   By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:46:15 by dokkim            #+#    #+#             */
-/*   Updated: 2021/07/07 21:10:57 by dokkim           ###   ########.fr       */
+/*   Updated: 2021/07/07 23:26:30 by dokkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_putstr_fd(char *str, int fd)
 	}
 }
 
-void	t_putpid(char *str, int nbr)
+void	ft_putpid(char *str, int nbr)
 {
 	ft_putstr_fd(str, 1);
 	ft_putnbr(nbr);

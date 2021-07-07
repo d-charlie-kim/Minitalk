@@ -6,7 +6,7 @@
 #    By: dokkim <dokkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 14:45:19 by dokkim            #+#    #+#              #
-#    Updated: 2021/07/07 23:18:15 by dokkim           ###   ########.fr        #
+#    Updated: 2021/07/07 23:25:53 by dokkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,10 @@ $(BONUS_NAME_CLIENT) : $(BONUS_OBJS_CLIENT)
 	$(CC) $(CFLAGS) $(BONUS_OBJS_CLIENT) -o $(BONUS_NAME_CLIENT)
 
 clean :
-	rm -rf $(OBJS_SERVER) $(OBJS_CLIENT)
+	rm -rf $(OBJS_SERVER) $(OBJS_CLIENT) $(BONUS_OBJS_SERVER) $(BONUS_OBJS_CLIENT)
 
 fclean : clean
-	rm -rf $(NAME_SERVER) $(NAME_CLIENT)
+	rm -rf $(NAME_SERVER) $(NAME_CLIENT) $(BONUS_NAME_SERVER) $(BONUS_NAME_CLIENT)
 
 bonus : all $(BONUS_NAME_SERVER) $(BONUS_NAME_CLIENT)
 
